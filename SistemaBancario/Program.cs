@@ -113,7 +113,7 @@ namespace SistemaBancario
                 Console.WriteLine("1 - Conta Corrente");
                 Console.WriteLine("2 - Conta Poupança");
                 Console.WriteLine("3 - Conta Empresarial");
-                Console.Write("Escolha o tipo: ");
+                Console.Write("\nEscolha o tipo: ");
                 string tipoConta = Console.ReadLine();
 
                 // Dados comuns a todas as contas
@@ -140,23 +140,23 @@ namespace SistemaBancario
                 {
                     case "1":
                         novaConta = new ContaCorrente(numeroConta, titular, saldoInicial);
-                        Console.WriteLine("Conta Corrente criada com taxa de R$ 2,50 por saque.");
+                        Console.WriteLine("\nConta Corrente criada com taxa de R$ 2,50 por saque.");
                         break;
                     case "2":
                         novaConta = new ContaPoupanca(numeroConta, titular, saldoInicial);
-                        Console.WriteLine("Conta Poupança criada com rendimento de 0,5% ao mês.");
+                        Console.WriteLine("\nConta Poupança criada com rendimento de 0,5% ao mês.");
                         break;
                     case "3":
                         novaConta = new ContaEmpresarial(numeroConta, titular, saldoInicial);
-                        Console.WriteLine("Conta Empresarial criada com limite de R$ 10.000,00.");
+                        Console.WriteLine("\nConta Empresarial criada com limite de R$ 10.000,00.");
                         break;
                     default:
-                        Console.WriteLine("Tipo de conta inválido!");
+                        Console.WriteLine("\nTipo de conta inválido!");
                         return;
                 }
 
                 gerenciador.AdicionarConta(novaConta);
-                Console.WriteLine("Conta criada com sucesso!");
+                Console.WriteLine("\nConta criada com sucesso!");
                 novaConta.ExibirInformacoes();
             }
             catch (FormatException)
