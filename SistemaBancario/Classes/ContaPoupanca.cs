@@ -2,22 +2,19 @@
 
 namespace SistemaBancario.Classes
 {
-    // ContaPoupanca herda de ContaBancaria
-    public class ContaPoupanca : ContaBancaria
+    // ContaPoupanca herda de ContaBancaria E implementa IRendimento
+    public class ContaPoupanca : ContaBancaria, IRendimento
     {
-        // Propriedade específica da ContaPoupanca
+        // Propriedade que atende o contrato da interface IRendimento
         public decimal TaxaRendimento { get; private set; }
 
-        // Construtor de ContaBancaria
-        // A taxa de rendimento já é definida internamente (0,5% = 0.005m)
         public ContaPoupanca(string numeroConta, string titular, decimal saldoInicial)
             : base(numeroConta, titular, saldoInicial)
         {
-            // Definindo o rendimento de 0,5% ao mês (0.005 em decimal)
-            TaxaRendimento = 0.005m;
+            TaxaRendimento = 0.005m; // 0,5% ao mês
         }
 
-        // Método específico da ContaPoupanca para aplicar rendimento
+        // Método que atende o contrato da interface IRendimento
         public void AplicarRendimento()
         {
             decimal rendimento = Saldo * TaxaRendimento;
@@ -28,7 +25,6 @@ namespace SistemaBancario.Classes
             Console.WriteLine($"Novo saldo: R${Saldo:F2}");
         }
 
-        // Sobrescrever para mostrar uma mensagem personalizada
         public override bool Sacar(decimal valor)
         {
             if (valor <= 0)
@@ -51,7 +47,6 @@ namespace SistemaBancario.Classes
             return true;
         }
 
-        // Implementação obrigatória do método abstrato
         public override void ExibirInformacoes()
         {
             Console.WriteLine("=== INFORMAÇÕES DA CONTA POUPANÇA ===");

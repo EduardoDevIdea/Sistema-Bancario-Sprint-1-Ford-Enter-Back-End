@@ -230,6 +230,7 @@ namespace SistemaBancario
         }
 
         // Método para aplicar rendimento na poupança
+        // Método para aplicar rendimento usando a INTERFACE IRendimento
         static void AplicarRendimentoPoupanca()
         {
             Console.Clear();
@@ -244,14 +245,14 @@ namespace SistemaBancario
                 if (conta == null)
                     return;
 
-                // Verificar se é uma conta poupança
-                if (conta is ContaPoupanca poupanca)
+                // Verificar se a conta implementa a interface IRendimento
+                if (conta is IRendimento contaComRendimento)
                 {
-                    poupanca.AplicarRendimento();
+                    contaComRendimento.AplicarRendimento();
                 }
                 else
                 {
-                    Console.WriteLine("Erro: Esta conta não é uma Conta Poupança!");
+                    Console.WriteLine("Erro: Esta conta não possui rendimento!");
                     Console.WriteLine($"Tipo da conta: {conta.GetType().Name}");
                 }
             }
